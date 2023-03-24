@@ -121,7 +121,7 @@ If you’re using a `*.conf` for your configuration parameters:
 "log_level": "debug"
 ```
 
-If you’re using a `*.env` for your configuration:
+If you’re using environment variables for your configuration:
 
 ```
 TYK_DB_LOGLEVEL=debug

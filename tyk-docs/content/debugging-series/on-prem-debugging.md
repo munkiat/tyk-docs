@@ -12,7 +12,7 @@ aliases:
 
 This guide should help a user of Tyk's self managed offering in debugging common issues. A helpful way to go about this is by:
 
-1. Isolating your components to see where the error is coming
+1. Isolating your components to see where the error is coming from
 2. Enabling debug logs to ensure you get all the information you need
 
 ## Gateway `/hello` endpoint

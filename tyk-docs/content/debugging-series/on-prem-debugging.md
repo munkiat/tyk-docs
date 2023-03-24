@@ -10,7 +10,7 @@ aliases:
   - /debugging-series/on-prem-debugging/
 ---
 
-This guide should help a user of Tyks self managed pro offering in debugging common issues. A helpful way to go about this is by:
+This guide should help a user of Tyk's self managed offering in debugging common issues. A helpful way to go about this is by:
 
 1. Isolating your components to see where the error is coming
 2. Enabling debug logs to ensure you get all the information you need

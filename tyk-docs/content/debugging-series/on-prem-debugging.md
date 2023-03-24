@@ -17,7 +17,7 @@ This guide should help a user of Tyks self managed pro offering in debugging com
 
 ## Gateway `/hello` endpoint
 
-The `/hello` health check endpoint against the Gateway is the quickest way in determining the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}).
+Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}).
 
 This endpoint is important as it allows for a user to isolate where a problem might be originating from. At a glance, the `/hello` endpoint reports the Gateways connectivity to the Dashboard, Redis, or in enterprise/hybrid installations: MDCB (rpc).
 

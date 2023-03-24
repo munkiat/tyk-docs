@@ -12,7 +12,7 @@ aliases:
 ---
 
 ## Introduction
-The [Tyk Control Plane]({{< ref "tyk-multi-data-centre/mdcb-components.md#control-plane" >}}) will contain all the standard components of a standard on-premises installation with the addition of one additional component: the Multi Data Centre Bridge (MDCB).
+The [Tyk Control Plane]({{< ref "tyk-multi-data-centre/mdcb-components.md#control-plane" >}}) will contain all the standard components of a standard Self-Managed installation with the addition of one additional component: the Multi Data Centre Bridge (MDCB).
 ### Prerequisites
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
 We will assume that the following components are up and running in your Controller DC:
@@ -148,6 +148,8 @@ It is possible to perform a health check on the MDCB service. This allows you to
 MDCB uses a specific port for health checks. This is defined by the `healthcheck_port` configuration setting, and defaults to `8181`. Do **not** use the standard MDCB listen port (`listen_port`) for MDCB health checks.
 
 To use the health check service, call the `/health` endpoint i.e. `http://my-mdcb-host:8181/health`. This will return a `HTTP 200 OK` response if the service is running.
+
+Please note that currently, the receipt of an HTTP 200 OK response merely indicates that the MDCB service is operational. However, it is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Data store) or if they are offline.
 
 ## Troubleshooting
 

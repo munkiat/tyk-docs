@@ -24,7 +24,7 @@ This endpoint is important as it allows the user to isolate the problem's origin
 ```json
 {
     "status":"pass",
-    "version":"v4.0.10",
+    "version":"v5.0",
     "description":"Tyk GW",
     "details":{
         "dashboard":{

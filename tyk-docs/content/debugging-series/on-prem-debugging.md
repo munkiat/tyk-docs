@@ -64,7 +64,7 @@ tyk-pump       | time="Jan 24 14:39:19" level=info msg="Purged 1 records..." pre
 
 Here is a more detailed output of the same call when using `debug` as the log level:
 
-```
+```bash
 tyk-gateway    | time="Jan 24 14:32:19" level=debug msg="Started proxy"
 tyk-gateway    | time="Jan 24 14:32:19" level=debug msg="Stripping proxy listen path: /api1/"
 tyk-gateway    | time="Jan 24 14:32:19" level=debug msg="Upstream path is: /get"

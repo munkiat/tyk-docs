@@ -54,7 +54,7 @@ Having Debug mode turned on is helpful when debugging because it throws more des
 
 Here is the output when using `info` as the log level:
 
-```
+```bash
 tyk-pump       | time="Jan 24 14:39:19" level=info msg="Purged 1 records..." prefix=mongo-pump
 tyk-pump       | time="Jan 24 14:39:19" level=info msg="Purged 1 records..." prefix=mongo-pump-selective
 tyk-mongo      | 2023-01-24T14:39:19.228+0000 I  NETWORK  [listener] connection accepted from 172.20.0.2:51028 #19 (19 connections now open)

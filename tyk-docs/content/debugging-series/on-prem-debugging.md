@@ -107,7 +107,7 @@ TYK_GW_LOGLEVEL=debug
 
 If you're using Tyk Helm Charts. Add the following items to your `values.yaml`:
 
-```
+```yaml
 extraEnvs:
   - name: TYK_LOGLEVEL
     value: debug

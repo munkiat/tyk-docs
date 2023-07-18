@@ -50,7 +50,7 @@ If the Dashboard or RPC connectivity fails, the Gateway will still function base
 
 ## Debug Logs
 
-Having Debug mode turned on is helpful when debugging because it throws more descriptive error messages. For example, here are the different outputs you receive when calling an Open Keyless API with `info` and `debug` log level modes.
+Setting the log level to debug will allow for more descriptive logs that will give a better context around any issue you might be facing. For example, here are the different outputs you receive when calling an Open Keyless API with `info` and `debug` log level modes.
 
 Here is the output when using `info` as the log level:
 

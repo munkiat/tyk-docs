@@ -89,7 +89,7 @@ tyk-pump       | time="Jan 24 14:32:20" level=info msg="Purged 1 records..." pre
 
 ```
 
-As shown above, the `debug` log level mode throws more information which will help during your debugging stage, i.e when the API call was started, when it was finished, how long it took for the call to finish, the endpoint that was called, the upstream that was called, the organization that the API belongs to, and more.
+As shown above, the `debug` log level mode provides more information which will help during your debugging stage, i.e when the API call was started, when it was finished, how long it took for the call to finish, the endpoint that was called, the upstream that was called, the organization that the API belongs to, and more.
 
 ### Gateway Debug Settings
 

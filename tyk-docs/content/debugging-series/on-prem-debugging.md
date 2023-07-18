@@ -117,7 +117,7 @@ extraEnvs:
 
 If you’re using a `*.conf` for your configuration parameters:
 
-```
+```json
 "log_level": "debug"
 ```
 

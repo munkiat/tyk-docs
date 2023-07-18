@@ -95,7 +95,7 @@ As shown above, the `debug` log level mode throws more information which will he
 
 If you’re using a `*.conf` for your configuration parameters:
 
-```
+```json
 "log_level": "debug"
 ```
 

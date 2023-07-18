@@ -46,7 +46,7 @@ This endpoint is important as it allows the user to isolate the problem's origin
 }
 ```
 
-If the Dashboard or RPC connectivity fails, the Gateway will still function based on the last received configurations from those components respectively. If Redis fails, Gateway will not be able to perform since it is a hard dependency.
+If the Dashboard or RPC connectivity fails (control plane components), the Gateway will still function based on the last received configurations from those components. However, if Redis fails, Gateway will go down since it is a hard dependency.
 
 ## Debug Logs
 

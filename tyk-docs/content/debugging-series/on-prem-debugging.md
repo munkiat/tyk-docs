@@ -101,7 +101,7 @@ If you’re using a `*.conf` for your configuration parameters:
 
 If you’re using environment variables for your configuration:
 
-```
+```json
 TYK_GW_LOGLEVEL=debug
 ```
 

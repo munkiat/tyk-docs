@@ -3470,8 +3470,8 @@ menu:
       category: Directory
       show: True
       - title: "API Security Overview"
-        category: Page
         path: /api-management/manage-apis/api-security/overview
+        category: Page
         show: True
     - title: "API Lifecycle Best Practice"
       category: Page

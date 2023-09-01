@@ -3460,7 +3460,7 @@ menu:
   - title: "APIM Best Practice"
     path: 
     category: Tab
-    show: False
+    show: True
     menu:
     - title: "Overview"
       category: Directory

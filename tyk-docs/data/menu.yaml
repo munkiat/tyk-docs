@@ -3468,7 +3468,8 @@ menu:
       menu:
     - title: "API Security Best Practice"
       category: Page
-      show: False
+      path: /api-management/manage-apis/api-security/overview
+      show: True
     - title: "API Lifecycle Best Practice"
       category: Page
       show: False

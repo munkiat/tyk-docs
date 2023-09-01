@@ -3469,6 +3469,7 @@ menu:
     - title: "API Security Best Practice"
       category: Directory
       show: True
+      menu:
       - title: "API Security Overview"
         path: /api-management/manage-apis/api-security/overview
         category: Page

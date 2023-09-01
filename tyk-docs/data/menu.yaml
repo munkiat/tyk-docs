@@ -3458,7 +3458,7 @@ menu:
         category: Page
         show: True
   - title: "APIM Best Practice"
-    path: 
+    path: /api-management/manage-apis/api-security/overview
     category: Tab
     show: True
     menu:
@@ -3472,6 +3472,10 @@ menu:
       menu:
       - title: "API Security Overview"
         path: /api-management/manage-apis/api-security/overview
+        category: Page
+        show: True
+      - title: "Authentication"
+        path: /api-management/manage-apis/api-security/authentication
         category: Page
         show: True
     - title: "API Lifecycle Best Practice"

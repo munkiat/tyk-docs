@@ -21,7 +21,7 @@ For REST APIs, it’s the API that’s primarily responsible for returning the c
 
 For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "graphql-proxy-only#managing-gql-schema" >}}) to limit which properties are queryable, then optionally use [field-based permissions]({{< ref "graphql-proxy-only#field-based-permission" >}}) to also specify access rights to those properties. 
 
-Function Level Authorisation: Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) and [block lists]({{< "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to manage authorisation of hosts and paths.
+Function Level Authorisation: Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) and [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to manage authorisation of hosts and paths.
 
 Assign Least Privileges: Design [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) that contain the least privileges necessary for users to achieve the workflows supported by the API. By favouring specific, granular access over broad access, this enables user groups and use cases to be addressed directly, as opposed to broad policies that cover multiple use cases and expose functionality unnecessarily.
 
@@ -29,7 +29,7 @@ Deny by Default: Favour use of [allow lists]({{< ref "advanced-configuration/tra
 
 Validate and Control All User Input: Protect APIs from erroneous or malicious data by validating all input before it’s processed by the API. Bad data, whether malicious or not, can cause many problems for APIs, from basic errors and bad user experience, to data leaks and downtime. The standard mitigation approach is to validate all user input, for which there are various solutions depending on the type of API:
 
-For REST APIs, use [schema validation]({{< ref "graphql/validation/#schema-validation" >}}) to control acceptable input data values.
+For REST APIs, use [schema validation]({{< ref "graphql/validation#schema-validation" >}}) to control acceptable input data values.
 
 For GraphQL APIs, use [GraphQL schema]({{< ref "graphql-proxy-only#managing-gql-schema" >}}) definitions to limit what data can be queried and mutated. Additionally, [complexity limiting]({{< ref "graphql/complexity-limiting" >}}) can be used to block resource-intensive queries.
 

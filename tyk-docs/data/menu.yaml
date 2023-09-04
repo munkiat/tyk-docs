@@ -3478,6 +3478,10 @@ menu:
         path: /api-management/manage-apis/api-security/authentication
         category: Page
         show: True
+      - title: "Authorisation"
+        path: /api-management/manage-apis/api-security/authorisation
+        category: Page
+        show: True
     - title: "API Lifecycle Best Practice"
       category: Page
       show: False

@@ -3482,6 +3482,18 @@ menu:
         path: /api-management/manage-apis/api-security/authorisation
         category: Page
         show: True
+      - title: "Resource Consumption"
+        path: /api-management/manage-apis/api-security/configuration
+        category: Page
+        show: True
+      - title: "Configuration"
+        path: /api-management/manage-apis/api-security/configuration
+        category: Page
+        show: True
+      - title: "Governance"
+        path: /api-management/manage-apis/api-security/configuration
+        category: Page
+        show: True
     - title: "API Lifecycle Best Practice"
       category: Page
       show: False

@@ -11,35 +11,56 @@ Almost any part of a request can be scrutinised as part of authorisation, but ch
 
 Authorisation can be a complex process that occurs at multiple locations throughout the request lifecycle. For example, a gateway can use access control policies to determine whether a required path is acceptable. But for decisions based on object data, such as when a client requests a particular record from the database, it’s the API that’s best positioned, as only it has access to the necessary data. For more information about the authorisation process, see Authorisation Levels in the appendix.
 
-Split Authorisation: Implement authorisation in the best locations across the stack. Use the gateway to handle general API authorisation related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorisation. In terms of OWASPs authorisation categories, it can be split as follows:
+### Split Authorisation
 
-Object Level Authorisation: Handle with the API. It can access and understand the data needed to make authorisation decisions on individual objects within its database.
+Implement authorisation in the best locations across the stack. Use the gateway to handle general API authorisation related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorisation. In terms of OWASPs authorisation categories, it can be split as follows:
 
-Object Property Level Authorisation: Handle with both the API and the gateway. The approach depends on the type of API:
+#### Object Level Authorisation
+
+Handle with the API. It can access and understand the data needed to make authorisation decisions on individual objects within its database.
+
+#### Object Property Level Authorisation
+
+Handle with both the API and the gateway. The approach depends on the type of API:
 
 For REST APIs, it’s the API that’s primarily responsible for returning the correct data. To complement this, the gateway can use [body transforms]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove sensitive data from responses if the API is unable to do so itself. The gateway can also enforce object property-level restrictions using [JSON validation]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}), for scenarios where the client is sending data to the API.
 
 For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "graphql-proxy-only#managing-gql-schema" >}}) to limit which properties are queryable, then optionally use [field-based permissions]({{< ref "graphql-proxy-only#field-based-permission" >}}) to also specify access rights to those properties. 
 
-Function Level Authorisation: Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) and [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to manage authorisation of hosts and paths.
+#### Function Level Authorisation
 
-Assign Least Privileges: Design [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) that contain the least privileges necessary for users to achieve the workflows supported by the API. By favouring specific, granular access over broad access, this enables user groups and use cases to be addressed directly, as opposed to broad policies that cover multiple use cases and expose functionality unnecessarily.
+Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) and [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to manage authorisation of hosts and paths.
 
-Deny by Default: Favour use of [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) to explicitly allow endpoints access, rather than [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to explicitly deny. This approach prevents new API endpoints from being accessible by default, as the presence of other, allowed endpoints means that access to them is implicitly denied.
+### Assign Least Privileges
 
-Validate and Control All User Input: Protect APIs from erroneous or malicious data by validating all input before it’s processed by the API. Bad data, whether malicious or not, can cause many problems for APIs, from basic errors and bad user experience, to data leaks and downtime. The standard mitigation approach is to validate all user input, for which there are various solutions depending on the type of API:
+Design [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) that contain the least privileges necessary for users to achieve the workflows supported by the API. By favouring specific, granular access over broad access, this enables user groups and use cases to be addressed directly, as opposed to broad policies that cover multiple use cases and expose functionality unnecessarily.
+
+### Deny by Default
+
+Favour use of [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) to explicitly allow endpoints access, rather than [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to explicitly deny. This approach prevents new API endpoints from being accessible by default, as the presence of other, allowed endpoints means that access to them is implicitly denied.
+
+### Validate and Control All User Input
+
+Protect APIs from erroneous or malicious data by validating all input before it’s processed by the API. Bad data, whether malicious or not, can cause many problems for APIs, from basic errors and bad user experience, to data leaks and downtime. The standard mitigation approach is to validate all user input, for which there are various solutions depending on the type of API:
 
 For REST APIs, use [schema validation]({{< ref "graphql/validation#schema-validation" >}}) to control acceptable input data values.
 
 For GraphQL APIs, use [GraphQL schema]({{< ref "graphql-proxy-only#managing-gql-schema" >}}) definitions to limit what data can be queried and mutated. Additionally, [complexity limiting]({{< ref "graphql/complexity-limiting" >}}) can be used to block resource-intensive queries.
 
-Track Anomalies: Use [log aggregation]({{< ref "log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}) and [event triggers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) to push data generated by application logs and events into centralised monitoring and reporting systems. This real-time data stream can be used to highlight application issues and security-related events, such as authentication and authorisation failures.
+### Track Anomalies
 
-Understand System State: Perform application performance monitoring by capturing gateway [instrumentation data]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}}). This enables the current system state, such as requests per second and response time, to be monitored and alerted upon.
+Use [log aggregation]({{< ref "log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}) and [event triggers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) to push data generated by application logs and events into centralised monitoring and reporting systems. This real-time data stream can be used to highlight application issues and security-related events, such as authentication and authorisation failures.
 
-Manage Cross-Origin Resource Sharing: Use [CORS filtering]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) to control the resources accessible by browser-based clients. This is a necessity for APIs that expect to be consumed by external websites.
+### Understand System State
 
-# Appendix: Authorisation Levels
+Perform application performance monitoring by capturing gateway [instrumentation data]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}}). This enables the current system state, such as requests per second and response time, to be monitored and alerted upon.
+
+### Manage Cross-Origin Resource Sharing
+
+Use [CORS filtering]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) to control the resources accessible by browser-based clients. This is a necessity for APIs that expect to be consumed by external websites.
+
+
+### Appendix: Authorisation Levels
 
 This section provides basic examples of where different authorisation levels occur in the API management stack. The accompanying diagrams use colour-coding to show links between request element and the associated authorisation locations and methods.
 
@@ -51,7 +72,7 @@ Object Property Level Authorisation: “APIs tend to expose endpoints that retur
 
 Function Level Authorisation: “Exploitation requires the attacker to send legitimate API calls to an API endpoint that they should not have access to as anonymous users or regular, non-privileged users. Exposed endpoints will be easily exploited.” (source: [OWASP Github](https://github.com/OWASP/API-Security/blob/9c9a808215fcbebda9f657c12f3e572371697eb2/editions/2023/en/0xa3-broken-object-property-level-authorization.md))
 
-## REST API - Reading Data
+##### REST API - Reading Data
 
 The client sends a `GET` request using the path `/profile/1`. This path has two parts:
 
@@ -65,7 +86,7 @@ The gateway ignores the dynamic part of the part of the path, in this case `1`, 
 
 Lastly, the API handles object level authorisation by using custom logic. This typically involves using the value of the `authorization` header in combination with the ownership and authorisation model specific to the API to determine if the client is authorised to read is requested record.
 
-## REST API - Writing Data
+##### REST API - Writing Data
 
 The client sends a `POST` request using the path `/profile` and body data containing the object to write. The path `/profile` is static and requires function level authorisation. The body data contains a JSON object that has two fields:
 
@@ -79,7 +100,7 @@ The gateway can also perform object property level authorisation, by validating 
 
 Lastly, the API handles object level authorisation by using custom logic. This typically involves using the value of the `authorization` header in combination with the ownership and authorisation model specific to the API to determine if the client is authorised to write the requested data.
 
-## GraphQL API - Querying Data
+##### GraphQL API - Querying Data
 
 The client sends a _POST_ request using the path `/graphql` and body data containing a GraphQL query. The path `/graphql` is static and requires function level authorisation. The GraphQL query contains several elements:
 

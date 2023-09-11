@@ -39,9 +39,8 @@ Understand System State: Perform application performance monitoring by capturing
 
 Manage Cross-Origin Resource Sharing: Use [CORS filtering]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) to control the resources accessible by browser-based clients. This is a necessity for APIs that expect to be consumed by external websites.
 
-# Authorisation Levels
+# Appendix: Authorisation Levels
 
-Appendix: Authorisation Levels
 This section provides basic examples of where different authorisation levels occur in the API management stack. The accompanying diagrams use colour-coding to show links between request element and the associated authorisation locations and methods.
 
 This is how OWASP describe the attack vectors for the three authorisation levels:

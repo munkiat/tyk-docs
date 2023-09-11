@@ -66,13 +66,16 @@ This section provides basic examples of where different authorisation levels occ
 
 This is how OWASP describe the attack vectors for the three authorisation levels:
 
-Object Level Authorisation: “Attackers can exploit API endpoints that are vulnerable to broken object-level authorization by manipulating the ID of an object that is sent within the request. Object IDs can be anything from sequential integers, UUIDs, or generic strings. Regardless of the data type, they are easy to identify in the request target (path or query string parameters), request headers, or even as part of the request payload.” (source: [OWASP Github](https://github.com/OWASP/API-Security/blob/9c9a808215fcbebda9f657c12f3e572371697eb2/editions/2023/en/0xa1-broken-object-level-authorization.md))
+**Object Level Authorisation**: “Attackers can exploit API endpoints that are vulnerable to broken object-level authorization by manipulating the ID of an object that is sent within the request. Object IDs can be anything from sequential integers, UUIDs, or generic strings. Regardless of the data type, they are easy to identify in the request target (path or query string parameters), request headers, or even as part of the request payload.” (source: [OWASP Github](https://github.com/OWASP/API-Security/blob/9c9a808215fcbebda9f657c12f3e572371697eb2/editions/2023/en/0xa1-broken-object-level-authorization.md))
 
-Object Property Level Authorisation: “APIs tend to expose endpoints that return all object’s properties. This is particularly valid for REST APIs. For other protocols such as GraphQL, it may require crafted requests to specify which properties should be returned. Identifying these additional properties that can be manipulated requires more effort, but there are a few automated tools available to assist in this task.” (source: [OWASP Github](https://github.com/OWASP/API-Security/blob/9c9a808215fcbebda9f657c12f3e572371697eb2/editions/2023/en/0xa3-broken-object-property-level-authorization.md))
+**Object Property Level Authorisation**: “APIs tend to expose endpoints that return all object’s properties. This is particularly valid for REST APIs. For other protocols such as GraphQL, it may require crafted requests to specify which properties should be returned. Identifying these additional properties that can be manipulated requires more effort, but there are a few automated tools available to assist in this task.” (source: [OWASP Github](https://github.com/OWASP/API-Security/blob/9c9a808215fcbebda9f657c12f3e572371697eb2/editions/2023/en/0xa3-broken-object-property-level-authorization.md))
 
-Function Level Authorisation: “Exploitation requires the attacker to send legitimate API calls to an API endpoint that they should not have access to as anonymous users or regular, non-privileged users. Exposed endpoints will be easily exploited.” (source: [OWASP Github](https://github.com/OWASP/API-Security/blob/9c9a808215fcbebda9f657c12f3e572371697eb2/editions/2023/en/0xa3-broken-object-property-level-authorization.md))
+**Function Level Authorisation**: “Exploitation requires the attacker to send legitimate API calls to an API endpoint that they should not have access to as anonymous users or regular, non-privileged users. Exposed endpoints will be easily exploited.” (source: [OWASP Github](https://github.com/OWASP/API-Security/blob/9c9a808215fcbebda9f657c12f3e572371697eb2/editions/2023/en/0xa3-broken-object-property-level-authorization.md))
+
 
 ##### REST API - Reading Data
+
+{{< img src="/img/api-management/security/rest-api-read-data.jpeg" alt="Rest API - Read Data" width="150px" >}}
 
 The client sends a `GET` request using the path `/profile/1`. This path has two parts:
 
@@ -88,6 +91,8 @@ Lastly, the API handles object level authorisation by using custom logic. This t
 
 ##### REST API - Writing Data
 
+{{< img src="/img/api-management/security/rest-api-write-data.jpeg" alt="Rest API - Write Data" width="150px" >}}
+
 The client sends a `POST` request using the path `/profile` and body data containing the object to write. The path `/profile` is static and requires function level authorisation. The body data contains a JSON object that has two fields:
 
 1. `name`: A standard object field. This requires object property authorisation.
@@ -101,6 +106,9 @@ The gateway can also perform object property level authorisation, by validating 
 Lastly, the API handles object level authorisation by using custom logic. This typically involves using the value of the `authorization` header in combination with the ownership and authorisation model specific to the API to determine if the client is authorised to write the requested data.
 
 ##### GraphQL API - Querying Data
+
+
+{{< img src="/img/api-management/security/graphql-query-data.jpeg" alt="Rest API - Write Data" width="150px" >}}
 
 The client sends a _POST_ request using the path `/graphql` and body data containing a GraphQL query. The path `/graphql` is static and requires function level authorisation. The GraphQL query contains several elements:
 

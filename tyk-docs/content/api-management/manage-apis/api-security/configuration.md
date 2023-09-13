@@ -1,6 +1,6 @@
 ---
-title: "Resource consumption"
-date: 2023-09-04
+title: "General Security Configuration"
+date: 2023-09-13
 tags: ["API Security", "security configuration"]
 description: "General security configuration"
 ---

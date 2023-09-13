@@ -3478,12 +3478,12 @@ menu:
         path: /api-management/manage-apis/api-security/authentication
         category: Page
         show: True
-      - title: "Authorisation Levels"
-        path: /api-management/manage-apis/api-security/authorisation-levels
-        category: Page
-        show: True
       - title: "Authorisation"
         path: /api-management/manage-apis/api-security/authorisation
+        category: Page
+        show: True
+      - title: "Authorisation Levels"
+        path: /api-management/manage-apis/api-security/authorisation-levels
         category: Page
         show: True
       - title: "Resource Consumption"

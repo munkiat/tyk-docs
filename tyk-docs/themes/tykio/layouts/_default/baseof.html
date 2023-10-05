@@ -72,6 +72,7 @@
                 {{ .Content }}
               {{ end }}
             </div>
+<<<<<<< HEAD
             {{- $pagePath := .RelPermalink}}
             {{- $pagePath := replace $pagePath "/docs" "" -}}
             {{- $pagePath := replace $pagePath "/nightly" "" -}}
@@ -97,6 +98,11 @@
                <a class="suggest-edit" target="_blank">Improve this page</a>
             </nav> -->
     
+=======
+            {{- partial "related_posts.html" . -}}
+            {{- partial "contribute_data.html" . -}}
+
+>>>>>>> bdf20ff6... [DX-731]add see also layout -For related content (#3320)
             <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
               <a id="previousArticle"></a>
               <img src="{{ "img/nav-center.png" | relURL }}"alt="Page forward and back image" /> 

@@ -157,7 +157,6 @@ Restricted and allowed types and fields can also be set up via Tyk Dashboard.
 2. From **System Management > Keys > Add Key** select a policy or configure directly for the key.
 3. Select your GraphQL API (marked as *GraphQL*).
 4. Enable either **Block list** or **Allow list**. It's not possible to have both enabled at the same time.
-### Block list
 
 By default all *Types* and *Fields* will be unchecked. By checking a *Type* or *Field* you will disallow to use it for any GraphQL operation associated with the key.
 

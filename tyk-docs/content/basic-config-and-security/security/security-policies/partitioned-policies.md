@@ -33,7 +33,7 @@ A partitioned policy can enforce any of these elements individually or together 
 *   The Access Control Limit (ACL)
 *   The Rate limit
 *   The Quota limit
-*   The GraphQL complexity
+*   The GraphQL complexity (currently only query-depth limit is supported)
 
 ### Set up a partition in an API
 

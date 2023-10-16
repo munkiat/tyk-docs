@@ -14,6 +14,70 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 
 ---
 
+## 5.2.2 Release Notes 
+
+##### Release Date <<TO UPDATE>> 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecation
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release primarily focuses on bug fixes. 
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
+
+#### Downloads
+- [docker image TO ADD](TO ADD)
+
+#### Changelog {#Changelog-v5.2.2}
+
+#### Added
+
+- Added a new Dashboard configuration option `Allow_Unsafe_Oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}). However, it is provided for early adopters and will be deprecated later. Please note that `Allow_Unsafe_Oas` must be set to `True` to use Tyk OAS APIS with Tyk Sync.
+
+#### Fixed
+
+- Fixed an issue with MongoDB where Tyk could incorrectly grant access to an API using a key after that API had been deleted from the associated policy. This was due to the policy cleaning operation in MongoDB installations, which Tyk interpreted as granting access to the original API. With this fix, the policy cleaning operation will not remove the final (Deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
+
+- Fixed an issue in The Tyk Dashboard where a user did not correctly inherit all permissions from their user group, permitting visibility of identity management.
+
+- Fixed an issue where Tyk would not store the *Policy Id* in the *Api Definition* for a policy that did not exist. When using *JWT Authentication*, the *JWT Default Policy Id* is stored in the *Api Definition*. If this policy had not been created in Tyk at the time the *Api Definition* was created, Tyk Dashboard would invalidate the field in the *Api Definition*. When the policy was later created, there would be no reference to it from the *Api Definition*. This was a particular issue when using *Tyk Operator* to manage the creation of assets on Tyk.
+
+- Fixed an issue in the Dashboard *Service Uptime* page where the number of success hits was being incorrectly reported as the total number of hits, inclusive of failures. After this fix, the *Success Column* displays only the number of success hits.
+
+- Fixed the following high priority Cves identified in the dashboard to provide increased protection against security vulnerabilities:
+
+    - [Cve-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+    - [Cve-2022-28946](https://nvd.nist.gov/vuln/detail/CVE-2022-28946)
+    - [Cve-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
+    - [Cve-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
+    - [Cve-2023-28119](https://nvd.nist.gov/vuln/detail/CVE-2023-28119)
+    - [Cve-2022-21698](https://nvd.nist.gov/vuln/detail/CVE-2022-21698)
+    - [Cve-2020-26160](https://nvd.nist.gov/vuln/detail/CVE-2020-26160)
+    - [Cve-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)
+    - [Cve-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
+    - [Cve-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
+    - [Cve-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
+
+- Fixed an issue encountered with *Azure Saml2.0 Identity Provider* that was preventing users from authenticating.
+
+- Fixed an issue encountered with the *API Designer* where fields defined in *Uptime_Tests.Check_List* were not correctly handled. Uptime tests can now be safely handled for *Tyk Classic APIs* in the *Raw API Definition* editor.
+
+- Fixed a security vulnerability with the Tyk Dashboard API where the `Url_Version` query parameter was a potential target for a SQL injection attack. This addresses [Cve-2023-42284](https://nvd.nist.gov/vuln/detail/CVE-2023-2284).
+
+- Fixed a security vulnerability with the Tyk Dashboard API where the `Url_Version` query parameter was a potential target for a SQL injection attack. This addresses [Cve-2023-42283](https://nvd.nist.gov/vuln/detail/CVE-2023-40283).
+
+#### Updated
+
+- Renamed The Licence Limit To Licence Entitlement. Hide The Licence Entitlement Line From The Chart In Case Its Value Is Set To 0.
+
+---
+
 ## 5.2.1 Release Notes 
 
 ##### Release Date 10 Oct 2023

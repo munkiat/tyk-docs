@@ -14,6 +14,68 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 
 ---
 
+## 5.2.2 Release Notes 
+
+##### Release Date <<TO UPDATE>>
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
+
+#### Downloads
+- [docker image to ADD]()
+- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.2)
+
+#### Changelog {#Changelog-v5.2.2}
+
+#### Added
+
+- Added a new Dashboard configuration option `Allow_Unsafe_Oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}). However, it is provided for early adopters and will be deprecated later. Please note that `Allow_Unsafe_Oas` must be set to `True` to use Tyk OAS APIS with Tyk Sync.
+
+- Implemented *Ulid Normalization*, replacing valid Ulid identifiers in the URL with a `{Ulid}` placeholder for analytics. This matches the pre-existing Uuid normalization. This is an open-source contribution by [Mohammad Abdolirad](https://github.com/atkrad).
+
+#### Fixed
+
+- Fixed an issue where enforced timeout values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [Max_Conn_Time]({{< ref "tyk-oss-gateway/configuration#max_conn_time >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+
+- Fixed an issue with MongoDB where Tyk could incorrectly grant access to an API using a key after that API had been deleted from the associated policy. This was due to the policy cleaning operation in MongoDB installations, which Tyk interpreted as granting access to the original API. With this fix, the policy cleaning operation will not remove the final (Deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
+
+- Fixed the following high priority Cves identified in the Gateway to provide increased protection against security vulnerabilities. Note that the logstash formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+
+  - [Cve-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
+  - [Cve-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
+  - [Cve-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)
+  - [Cve-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)
+  - [Cve-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)
+  - [Cve-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
+  - [Cve-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
+  - [Cve-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
+
+- Fixed a potential race condition where the *Drl Manager* was not properly protected against concurrent read/write operations in some high load scenarios.
+
+- Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against JWKS or the public key in the API Deinfition.
+
+- Fixed a performance issue where JWT middleware introduced latency which significantly reduced the overall request/response throughput.
+
+- Fixed an issue that prevented *UDG* examples from being displayed in the dashboard when the *Open Policy Agent(OPA)* is enabled.
+
+#### Community Contributions
+
+Special thanks to the following members of the Tyk community for their contributions in this release:
+
+- Fixed an issue where a duplicate error message was reported when a custom Go plugin returned an error. Thanks to [@PatrickTaibel](https://github.com/PatrickTaibel) for highlighting the issue and suggesting a fix.
+
+---
+
 ## 5.2.1 Release Notes 
 
 ##### Release Date 10 Oct 2023

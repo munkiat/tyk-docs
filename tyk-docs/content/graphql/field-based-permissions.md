@@ -158,6 +158,8 @@ Restricted and allowed types and fields can also be set up via Tyk Dashboard.
 3. Select your GraphQL API (marked as *GraphQL*).
 4. Enable either **Block list** or **Allow list**. It's not possible to have both enabled at the same time.
 
+### Block list
+
 By default all *Types* and *Fields* will be unchecked. By checking a *Type* or *Field* you will disallow to use it for any GraphQL operation associated with the key.
 
 For example, the settings from the screenshot below would block `code` and `countries` fields in `Continent` type as well as `latt` and `longt` fields in `Coordinates` type from usage.

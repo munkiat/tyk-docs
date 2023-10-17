@@ -156,9 +156,7 @@ Restricted and allowed types and fields can also be set up via Tyk Dashboard.
 1. *Optional:* Configure a Policy from **System Management > Policies > Add Policy**.
 2. From **System Management > Keys > Add Key** select a policy or configure directly for the key.
 3. Select your GraphQL API (marked as *GraphQL*).
-4. Enable either **Block list** or **Allow list**. It's not possible to have both enabled at the same time.
-
-### Block list
+4. Enable either **Block list** or **Allow list**. By default, both are disabled. It's not possible to have both enabled at the same time - enabling one switch automatically disables the other.
 
 ### Block list
 
@@ -178,6 +176,6 @@ For example, the settings illustrated below would only allow the following:
 - `code` field in `Continent` type.
 - `code` and `name` fields in `Language` type.
 
-Note that the `Query` type is unchecked. Subsequently, you will not be able to run any query.
+Note that the `Query` type is unchecked, which indicates that all fields in `Query` type are unchecked. Subsequently, you will not be able to run any query.
 
 {{< img src="/img/dashboard/system-management/field-based-permissions-allowlist.png" alt="field-based-permissions" >}}

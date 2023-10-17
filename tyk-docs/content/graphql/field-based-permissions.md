@@ -160,16 +160,24 @@ Restricted and allowed types and fields can also be set up via Tyk Dashboard.
 
 ### Block list
 
+### Block list
+
 By default all *Types* and *Fields* will be unchecked. By checking a *Type* or *Field* you will disallow to use it for any GraphQL operation associated with the key.
 
-For example, the settings from the screenshot below would block `code` and `countries` fields in `Continent` type as well as `latt` and `longt` fields in `Coordinates` type from usage.
+For example, the settings illustrated below would block the following:
+- `code` and `countries` fields in `Continent` type.
+- `latt` and `longt` fields in `Coordinates` type.
 
 {{< img src="/img/dashboard/system-management/field-based-permissions-blocklist.png" alt="field-based-permissions" >}}
 
 ### Allow list
 
-By default all *Types* and *Fields* will be unchecked. By checking a *Type* or *Field* you will allow to use it for any GraphQL operation associated with the key.
+By default all *Types* and *Fields* will be unchecked. By checking a *Type* or *Field* you will allow it to be used for any GraphQL operation associated with the key.
 
-For example, the settings from the screenshot below would only allow `code` field in `Continent` type as well as `code` and `name` fields in `Language` to be used. Note that since no query is allowed (no field in `Query` type is checked), you will not be able to run any query whatsoever.
+For example, the settings illustrated below would only allow the following:
+- `code` field in `Continent` type.
+- `code` and `name` fields in `Language` type.
+
+Note that the `Query` type is unchecked. Subsequently, you will not be able to run any query.
 
 {{< img src="/img/dashboard/system-management/field-based-permissions-allowlist.png" alt="field-based-permissions" >}}

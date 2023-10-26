@@ -97,7 +97,7 @@ In addition to changing the default secrets (see [Change all the shared secrets]
 
 To keep real-time health-check data and make it available to the Health-check API, Tyk needs to record information for every request, in a rolling window - this is an expensive operation and can limit throughput - you have two options: switch it off, or get a box with more cores.
 
-### Selecting the appropriate Log level
+### Selecting the appropriate log level
 
 Tyk provides multiple log levels: error, warn, info, debug. Setting higher log levels consumes more computing resources and would have an impact on the Tyk component. Tyk installations default to log level info unless modified by config files or environment variables.
 
